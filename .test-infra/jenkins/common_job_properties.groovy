@@ -239,7 +239,7 @@ class common_job_properties {
   }
 
   // Configures the argument list for performance tests, adding the standard
-  // performance test job arguments.
+  // performance build job arguments.
   private static def genPerformanceArgs(def argMap) {
     LinkedHashMap<String, String> standardArgs = [
       project: 'apache-beam-testing',
@@ -254,7 +254,7 @@ class common_job_properties {
     return mapToArgString(joinedArgs)
   }
 
-  // Adds the standard performance test job steps.
+  // Adds the standard performance build job steps.
   static def buildPerformanceTest(def context, def argMap) {
     def pkbArgs = genPerformanceArgs(argMap)
     context.steps {
@@ -270,8 +270,8 @@ class common_job_properties {
         // Install Perfkit benchmark requirements.
         shell('.env/bin/pip install -r PerfKitBenchmarker/requirements.txt')
         // Install job requirements for Python SDK.
-        shell('.env/bin/pip install -e ' + common_job_properties.checkoutDir + '/sdks/python/[gcp,test]')
-        // Launch performance test.
+        shell('.env/bin/pip install -e ' + common_job_properties.checkoutDir + '/sdks/python/[gcp,build]')
+        // Launch performance build.
         shell(".env/bin/python PerfKitBenchmarker/pkb.py $pkbArgs")
     }
   }

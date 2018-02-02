@@ -27,7 +27,7 @@ mavenJob('beam_Java_IntegrationTest') {
   // Set standard properties for a job which pulls artifacts from an upstream job.
   common_job_properties.setPipelineDownstreamJobProperties(delegate, 'beam_Java_Build')
 
-  // Profiles to activate in order to ensure runners are available at test time.
+  // Profiles to activate in order to ensure runners are available at build time.
   profiles = [
     'jenkins-precommit',
     'direct-runner',
@@ -57,7 +57,7 @@ mavenJob('beam_Java_IntegrationTest') {
   ]
   // This adds executions for each of the failsafe invocations listed above to the list of goals.
   examples_integration_executions.each({
-    value -> args.add("failsafe:integration-test@${value}")
+    value -> args.add("failsafe:integration-build@${value}")
   })
   goals(args.join(' '))
 }

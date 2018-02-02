@@ -18,42 +18,49 @@
 
 import common_job_properties
 
-// This is the Java precommit which runs a Gradle build, and the current set
-// of precommit tests.
-job('beam_PreCommit_Java_GradleBuild') {
-  description('Runs a build of the current GitHub Pull Request.')
+['Pre', 'Post'].each {
+  jobName ->
+    // This is the Java precommit which runs a Gradle build, and the current set
+    // of precommit tests.
+    job("beam_${jobName}Commit_Java_GradleBuild") {
+      description('Runs a build of the current GitHub Pull Request.')
 
-  // Execute concurrent builds if necessary.
-  concurrentBuild()
+      // Execute concurrent builds if necessary.
+      concurrentBuild()
 
-  // Set common parameters.
-  common_job_properties.setTopLevelMainJobProperties(
-    delegate,
-    'master',
-    240)
+      // Set common parameters.
+      common_job_properties.setTopLevelMainJobProperties(
+              delegate,
+              'master',
+              240)
 
-  // Publish all test results to Jenkins
-  publishers {
-    archiveJunit('**/build/test-results/**/*.xml')
-  }
+      // Publish all build results to Jenkins
+      publishers {
+        archiveJunit('**/build/build-results/**/*.xml')
+      }
 
-  def gradle_switches = [
-    // Continue the build even if there is a failure to show as many potential failures as possible.
-    '--continue',
-    // Until we verify the build cache is working appropriately, force rerunning all tasks
-    '--rerun-tasks',
-  ]
+      def gradle_switches = [
+              // Continue the build even if there is a failure to show as many potential failures as possible.
+              '--continue',
+              // Until we verify the build cache is working appropriately, force rerunning all tasks
+              '--rerun-tasks',
+      ]
 
-  def gradle_command_line = './gradlew ' + gradle_switches.join(' ') + ' :javaPreCommit'
-  // Sets that this is a PreCommit job.
-  common_job_properties.setPreCommit(delegate, gradle_command_line, 'Run Java Gradle PreCommit')
-  steps {
-    gradle {
-      rootBuildScriptDir(common_job_properties.checkoutDir)
-      tasks(':javaPreCommit')
-      for (String gradle_switch : gradle_switches) {
-        switches(gradle_switch)
+      def gradle_command_line = './gradlew ' + gradle_switches.join(' ') + ' :javaPreCommit'
+      if (jobName == 'Pre') {
+        // Sets that this is a PreCommit job.
+        common_job_properties.setPreCommit(delegate, gradle_command_line, 'Run Java Gradle PreCommit')
+      } else {
+        common_job_properties.setPostCommit(delegate, '0 */6 * * *', false)
+      }
+      steps {
+        gradle {
+          rootBuildScriptDir(common_job_properties.checkoutDir)
+          tasks(':javaPreCommit')
+          for (String gradle_switch : gradle_switches) {
+            switches(gradle_switch)
+          }
+        }
       }
     }
-  }
 }

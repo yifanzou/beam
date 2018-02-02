@@ -55,9 +55,9 @@ job('beam_PreCommit_Website_Merge') {
         # Install all needed gems.
         bundle install --path ~/.gem/
 
-        # Build the new site and test it.
+        # Build the new site and build it.
         rm -fr ./content/
-        bundle exec rake test
+        bundle exec rake build
     '''.stripIndent().trim()
   }
 }

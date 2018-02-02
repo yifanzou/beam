@@ -59,7 +59,7 @@ mavenJob('beam_Java_Build') {
   publishers {
     archiveArtifacts {
       pattern('.repository/org/apache/beam/**/*')
-      pattern('.test-infra/**/*')
+      pattern('.build-infra/**/*')
       pattern('.github/**/*')
       pattern('examples/**/*')
       pattern('runners/**/*')

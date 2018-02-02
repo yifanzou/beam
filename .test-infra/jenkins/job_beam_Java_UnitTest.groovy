@@ -31,7 +31,7 @@ mavenJob('beam_Java_UnitTest') {
   args = [
     '-B',
     '-e',
-    'surefire:test@default-test',
+    'surefire:build@default-build',
     "-pl '!sdks/python'",
     '-DrepoToken=$COVERALLS_REPO_TOKEN',
     '-DpullRequest=$ghprbPullId',

@@ -36,7 +36,7 @@ matrixJob('beam_PostCommit_Java_JDK_Versions_Test') {
       delegate,
       '0 */6 * * *',
       false,
-      '',  // TODO: Remove last two args once test is stable again.
+      '',  // TODO: Remove last two args once build is stable again.
       false)
 
   // Allows triggering this build against pull requests.
@@ -52,7 +52,7 @@ matrixJob('beam_PostCommit_Java_JDK_Versions_Test') {
       common_job_properties.setMavenConfig(delegate)
 
       // Maven build project.
-      // Skip beam-sdks-python since this test is only apply to Java.
+      // Skip beam-sdks-python since this build is only apply to Java.
       // TODO[BEAM-2322,BEAM-2323,BEAM-2324]: Re-enable beam-runners-apex once the build is passed.
       goals('-B -e -P dataflow-runner clean install -pl \'!org.apache.beam:beam-sdks-python,!org.apache.beam:beam-runners-apex\' -DskipITs=false -DintegrationTestPipelineOptions=\'[ "--project=apache-beam-testing", "--tempRoot=gs://temp-storage-for-end-to-end-tests", "--runner=TestDataflowRunner" ]\'')
     }

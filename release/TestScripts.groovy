@@ -18,7 +18,7 @@
  */
 
 /*
- * Scripting functions to make writing a test similar to the quickstart
+ * Scripting functions to make writing a build similar to the quickstart
  * instructions from https://beam.apache.org/get-started/quickstart-java/
  */
 class TestScripts {
