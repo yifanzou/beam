@@ -1,3 +1,21 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * License); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an AS IS BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 import ReleaseConfiguration
 import TestScripts
 
@@ -23,6 +41,8 @@ StringBuilder cmd = new StringBuilder()
 *   apache-beam-{version}-python.zip.sha1
 *
 * */
+t.run('echo ------------------------- python sdk validation start------------------')
+println "test-----test-----test-----"
 t.run("pwd")
 t.run("wget ${ReleaseConfiguration.CANDIDATE_URL}${ReleaseConfiguration.SHA1_FILE_NAME}")
 t.run("wget ${ReleaseConfiguration.CANDIDATE_URL}${ReleaseConfiguration.MD5_FILE_NAME}")
@@ -70,7 +90,7 @@ println()
 * 5. Run wordcount with DataflowRunner
 *
 * */
-cmd.setLength(0) // clear the cmd buffer
+/*cmd.setLength(0) // clear the cmd buffer
 cmd.append("python -m apache_beam.examples.wordcount ")
     .append("--output gs://${ReleaseConfiguration.BUCKET_NAME}/${ReleaseConfiguration.WORDCOUNT_OUTPUT} ")
     .append("--staging_location gs://${ReleaseConfiguration.BUCKET_NAME}${ReleaseConfiguration.TEMP_DIR} ")
@@ -87,13 +107,13 @@ t.run(cmd.toString())
 t.run("gsutil ls gs://${ReleaseConfiguration.BUCKET_NAME}")
 4.times {
   t.see("gs://${ReleaseConfiguration.BUCKET_NAME}/${ReleaseConfiguration.WORDCOUNT_OUTPUT}-0000${it}-of-00004")
-}
+}*/
 
 /*
 * 6. Run Streaming wordcount with DirectRunner
 *
 * */
-// create pubsub topics (Note that if toipics already exist, there will be errors when running these commands, TODO: error catch)
+// create pubsub topics
 create_pubsub(t)
 
 cmd.setLength(0) // clear the cmd buffer
