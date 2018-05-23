@@ -31,7 +31,7 @@
   <description>IO to read and write on MongoDB.</description>
 
   <properties>
-    <mongo-java-driver.version>3.2.2</mongo-java-driver.version>
+    <mongo-java-driver.version>3.7.0</mongo-java-driver.version>
   </properties>
 
 
