@@ -34,7 +34,7 @@
 
   <properties>
     <apex.core.version>3.7.0</apex.core.version>
-    <apex.malhar.version>3.4.0</apex.malhar.version>
+    <apex.malhar.version>3.8.0</apex.malhar.version>
     <skipIntegrationTests>true</skipIntegrationTests>
     <!-- memory limit for embedded cluster -->
     <surefire.args>-Xmx2048m</surefire.args>
