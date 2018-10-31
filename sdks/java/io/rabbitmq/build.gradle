@@ -29,7 +29,7 @@ dependencies {
   shadow "com.rabbitmq:amqp-client:4.6.0"
   testCompile project(path: ":beam-runners-direct-java", configuration: "shadow")
   testCompile "org.apache.qpid:qpid-broker:0.28"
-  testCompile "org.apache.qpid:qpid-broker-core:0.28"
+  testCompile "org.apache.qpid:qpid-broker-core:7.0.6"
   testCompile library.java.junit
   testCompile library.java.hamcrest_core
   testCompile library.java.hamcrest_library
