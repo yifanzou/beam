@@ -24,7 +24,7 @@ enableJavaPerformanceTesting()
 description = "Apache Beam :: SDKs :: Java :: IO :: Hadoop Input Format"
 ext.summary = "IO to read data from sources that implement Hadoop Input Format."
 
-def log4j_version = "2.6.2"
+def log4j_version = "2.11.2"
 def elastic_search_version = "5.0.0"
 
 // Ban dependencies from the test runtime classpath

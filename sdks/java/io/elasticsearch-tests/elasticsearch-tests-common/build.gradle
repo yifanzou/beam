@@ -23,7 +23,7 @@ description = "Apache Beam :: SDKs :: Java :: IO :: Elasticsearch-Tests :: Commo
 ext.summary = "Common test classes for ElasticsearchIO"
 
 def jna_version = "4.1.0"
-def log4j_version = "2.6.2"
+def log4j_version = "2.11.2"
 
 dependencies {
   testCompile library.java.jackson_databind
