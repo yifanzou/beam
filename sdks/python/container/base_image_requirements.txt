@@ -28,7 +28,7 @@ avro-python3==1.8.2;python_version>="3.4"
 fastavro==0.21.4
 crcmod==1.7
 dill==0.2.9
-future==0.16.0
+future==0.17.1
 futures==3.2.0;python_version<"3.0"
 grpcio==1.15.0
 hdfs==2.1.0
