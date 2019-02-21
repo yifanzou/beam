@@ -63,7 +63,7 @@ python-snappy==0.5.3
 # These are additional packages likely to be used by customers.
 numpy==1.15.2
 scipy==1.1.0
-pandas==0.23.4
+pandas==0.24.1
 protorpc==0.11.1
 python-gflags==3.0.6
 setuptools<=39.1.0 # requirement for Tensorflow.
