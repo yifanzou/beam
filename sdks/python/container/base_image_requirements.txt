@@ -57,7 +57,7 @@ google-cloud-bigtable==0.31.1
 google-cloud-core==0.28.1
 
 # Optional packages
-cython==0.28.1
+cython==0.29.6
 python-snappy==0.5.3
 
 # These are additional packages likely to be used by customers.
