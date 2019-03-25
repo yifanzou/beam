@@ -86,7 +86,7 @@ dependencies {
   shadowTest library.java.junit
   shadowTest library.java.mockito_core
   shadowTest library.java.jackson_dataformat_yaml
-  shadowTest "org.apache.kafka:kafka_2.11:0.11.0.1"
+  shadowTest "org.apache.kafka:kafka_2.11:2.2.0"
   validatesRunner project(path: ":beam-sdks-java-core", configuration: "shadowTest")
   validatesRunner project(path: ":beam-sdks-java-io-hadoop-format", configuration: "shadowTest")
   validatesRunner project(path: ":beam-examples-java", configuration: "shadowTest")
