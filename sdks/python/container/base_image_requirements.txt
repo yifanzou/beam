@@ -66,7 +66,7 @@ scipy==1.1.0
 pandas==0.23.4
 protorpc==0.11.1
 python-gflags==3.0.6
-setuptools<=39.1.0 # requirement for Tensorflow.
+setuptools<40.10.0 # requirement for Tensorflow.
 tensorflow==1.11.0
 
 # Packages needed for testing.
